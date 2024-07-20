@@ -10,3 +10,6 @@
 - **User-Friendly Interface:** Simple and intuitive Windows Forms interface for ease of use.
 - **Database Integration:** Uses a local or remote database to store and retrieve appointment and patient data.
 
+
+
+Acknowledged contributor: @jessietech08
