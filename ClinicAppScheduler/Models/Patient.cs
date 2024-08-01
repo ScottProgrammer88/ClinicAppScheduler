@@ -27,10 +27,12 @@ namespace ClinicAppScheduler.Models
 
         // primary email address
         [Required]
+        [EmailAddress]
         public string EmailAddress { get; set; }
 
         // primary phone number
         [Required]
+        [Phone]
         public string PhoneNumber { get; set; }
 
         // optional
