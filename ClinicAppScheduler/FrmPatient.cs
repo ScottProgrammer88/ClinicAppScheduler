@@ -1,8 +1,8 @@
 namespace ClinicAppScheduler
 {
-	public partial class Form1 : Form
+	public partial class frmPatient : Form
 	{
-		public Form1()
+		public frmPatient()
 		{
 			InitializeComponent();
 		}
