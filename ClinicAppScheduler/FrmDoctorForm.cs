@@ -16,5 +16,10 @@ namespace ClinicAppScheduler
         {
             InitializeComponent();
         }
+
+        private void frmDoctor_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
