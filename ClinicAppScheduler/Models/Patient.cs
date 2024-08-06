@@ -52,6 +52,7 @@ namespace ClinicAppScheduler.Models
         /// </summary>
         public string? Description { get; set; }
 
+        [Required]
         /// <summary>
         /// User creates password to sign in to their account
         /// </summary>
