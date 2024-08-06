@@ -21,5 +21,11 @@ namespace ClinicAppScheduler
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmPatient frmPatient = new frmPatient();
+            frmPatient.ShowDialog();
+        }
     }
 }
