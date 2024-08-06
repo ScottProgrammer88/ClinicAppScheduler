@@ -9,34 +9,52 @@ namespace ClinicAppScheduler.Models
 {
     public class Patient
     {
-        // tell EF Core to make this primary key
+        /// <summary>
+        /// tell EF Core to make this primary key
+        /// </summary>
         [Key] 
         public int PatientId { get; set; }
 
-        // legal first name 
+        /// <summary>
+        /// legal first name 
+        /// </summary>
         [Required]
         public string FirstName { get; set; }
 
-        // legal last name
+        /// <summary>
+        /// legal last name
+        /// </summary>
         [Required]
         public string LastName { get; set; }
 
-        // date of birth
+        /// <summary>
+        /// date of birth
+        /// </summary>
         [Required]
         public DateTime DateOfBirth { get; set; }
 
-        // primary email address
+        /// <summary>
+        /// primary email address
+        /// </summary>
         [Required]
         [EmailAddress]
         public string EmailAddress { get; set; }
 
-        // primary phone number
+        /// <summary>
+        /// primary phone number
+        /// </summary>
         [Required]
         [Phone]
         public string PhoneNumber { get; set; }
 
-        // optional
-        // brief description of reason to schedule
+        /// <summary>
+        /// optional: brief description of reason to schedule
+        /// </summary>
         public string? Description { get; set; }
+
+        /// <summary>
+        /// User creates password to sign in to their account
+        /// </summary>
+        public string PasswordHash { get; set; }
     }
 }
