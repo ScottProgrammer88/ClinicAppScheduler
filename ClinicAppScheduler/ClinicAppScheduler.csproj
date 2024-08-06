@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <StartupObject>ClinicAppScheduler.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
