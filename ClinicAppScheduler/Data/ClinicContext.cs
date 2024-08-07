@@ -28,5 +28,8 @@ namespace ClinicAppScheduler.Data
 
         // DbSet for Doctors
         public DbSet<Doctor> Doctors { get; set; }
+
+        // DbSet for Appointments
+        public DbSet<Appointment> Appointments { get; set; }
     }
 }
