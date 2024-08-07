@@ -81,6 +81,8 @@ namespace ClinicAppScheduler
         /// <returns>hashed password</returns>
         private string HashedPassword(string password)
         {
+            // To use BCrypt.Net must install BCrypt.Net-Next
+            // BCrypt.Net.BCrypt.EnhancedHashPassword() to create hashed password
             string passwordHash = BCrypt.Net.BCrypt.EnhancedHashPassword(password, 13);
             return passwordHash;
         }
