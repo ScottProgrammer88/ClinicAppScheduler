@@ -42,6 +42,8 @@
             txtPhoneNumber = new TextBox();
             txtDescription = new TextBox();
             btnSave = new Button();
+            label1 = new Label();
+            txtPassword = new TextBox();
             SuspendLayout();
             // 
             // btnOpenDoctorForm
@@ -161,11 +163,29 @@
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(399, 304);
+            label1.Name = "label1";
+            label1.Size = new Size(94, 15);
+            label1.TabIndex = 14;
+            label1.Text = "Create Password";
+            // 
+            // txtPassword
+            // 
+            txtPassword.Location = new Point(521, 301);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(100, 23);
+            txtPassword.TabIndex = 15;
+            // 
             // frmPatient
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 553);
+            Controls.Add(txtPassword);
+            Controls.Add(label1);
             Controls.Add(btnSave);
             Controls.Add(txtDescription);
             Controls.Add(txtPhoneNumber);
@@ -203,5 +223,7 @@
         private TextBox txtPhoneNumber;
         private TextBox txtDescription;
         private Button btnSave;
+        private Label label1;
+        private TextBox txtPassword;
     }
 }

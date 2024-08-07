@@ -39,9 +39,11 @@ namespace ClinicAppScheduler
             string emailAddress = txtEmailAddress.Text;
             string phoneNumber = txtPhoneNumber.Text;
             string description = txtDescription.Text;
+            string password = HashedPassword(txtPassword.Text);
 
             // Validate and save the patient details to the database
-            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) || string.IsNullOrWhiteSpace(emailAddress) || string.IsNullOrWhiteSpace(phoneNumber))
+            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) || 
+                    string.IsNullOrWhiteSpace(emailAddress) || string.IsNullOrWhiteSpace(phoneNumber) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Please fill in all required fields.");
             }
@@ -55,7 +57,8 @@ namespace ClinicAppScheduler
                     DateOfBirth = dateOfBirth,
                     EmailAddress = emailAddress,
                     PhoneNumber = phoneNumber,
-                    Description = description
+                    Description = description,
+                    PasswordHash = password
                 };
 
                 // Add the new patient to the database
@@ -68,6 +71,20 @@ namespace ClinicAppScheduler
                 MessageBox.Show("Patient saved successfully!");
             }
 
+        }
+
+        /// <summary>
+        /// takes users password entered and hashes it to prevent attackers from 
+        /// hacking into their accounts
+        /// </summary>
+        /// <param name="password">user creates their own password to create account</param>
+        /// <returns>hashed password</returns>
+        private string HashedPassword(string password)
+        {
+            // To use BCrypt.Net must install BCrypt.Net-Next
+            // BCrypt.Net.BCrypt.EnhancedHashPassword() to create hashed password
+            string passwordHash = BCrypt.Net.BCrypt.EnhancedHashPassword(password, 13);
+            return passwordHash;
         }
     }
 
