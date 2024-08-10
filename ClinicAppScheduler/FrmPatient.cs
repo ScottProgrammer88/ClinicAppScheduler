@@ -42,7 +42,7 @@ namespace ClinicAppScheduler
             string password = HashedPassword(txtPassword.Text);
 
             // Validate and save the patient details to the database
-            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) || 
+            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) ||
                     string.IsNullOrWhiteSpace(emailAddress) || string.IsNullOrWhiteSpace(phoneNumber) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Please fill in all required fields.");
@@ -85,6 +85,15 @@ namespace ClinicAppScheduler
             // BCrypt.Net.BCrypt.EnhancedHashPassword() to create hashed password
             string passwordHash = BCrypt.Net.BCrypt.EnhancedHashPassword(password, 13);
             return passwordHash;
+        }
+
+        private void btnOpenAppointmentsForm_Click(object sender, EventArgs e)
+        {
+            // Create an instance of the FrmAppointmentsForm form
+            FrmAppointmentsForm appointmentsForm = new FrmAppointmentsForm();
+
+            // use ShowDialog() to display the form as a modal dialog box
+            appointmentsForm.ShowDialog(); 
         }
     }
 
