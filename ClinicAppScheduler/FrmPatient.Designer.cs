@@ -44,6 +44,7 @@
             btnSave = new Button();
             label1 = new Label();
             txtPassword = new TextBox();
+            btnOpenAppointmentsForm = new Button();
             SuspendLayout();
             // 
             // btnOpenDoctorForm
@@ -179,11 +180,22 @@
             txtPassword.Size = new Size(100, 23);
             txtPassword.TabIndex = 15;
             // 
+            // btnOpenAppointmentsForm
+            // 
+            btnOpenAppointmentsForm.Location = new Point(270, 473);
+            btnOpenAppointmentsForm.Name = "btnOpenAppointmentsForm";
+            btnOpenAppointmentsForm.Size = new Size(162, 47);
+            btnOpenAppointmentsForm.TabIndex = 16;
+            btnOpenAppointmentsForm.Text = "Open Appointments Form";
+            btnOpenAppointmentsForm.UseVisualStyleBackColor = true;
+            btnOpenAppointmentsForm.Click += btnOpenAppointmentsForm_Click;
+            // 
             // frmPatient
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 553);
+            Controls.Add(btnOpenAppointmentsForm);
             Controls.Add(txtPassword);
             Controls.Add(label1);
             Controls.Add(btnSave);
@@ -225,5 +237,6 @@
         private Button btnSave;
         private Label label1;
         private TextBox txtPassword;
+        private Button btnOpenAppointmentsForm;
     }
 }
