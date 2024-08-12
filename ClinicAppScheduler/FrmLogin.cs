@@ -67,6 +67,10 @@ namespace ClinicAppScheduler
                 // BCrypt.Net.BCrypt.EnhancedVerify() checks if the password matches the password hash
                 if (!BCrypt.Net.BCrypt.EnhancedVerify(password, patient.PasswordHash))
                 {
+                    // After validation store PatientId to Session.userId to keep track
+                    // of which Patient is logged in. Same for the Patients first name.
+                    Session.userId = patient.PatientId;
+                    Session.userName = patient.FirstName;
                     return null;
                 }
             }
