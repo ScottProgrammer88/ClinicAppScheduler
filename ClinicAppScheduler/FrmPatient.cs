@@ -21,7 +21,10 @@ namespace ClinicAppScheduler
 
         private void frmPatient_Load(object sender, EventArgs e)
         {
-
+            // Sets range for date time picker 
+            // goes back to 1900-current date
+            dtpDateOfBirth.MinDate = new DateTime(1900, 1, 1);
+            dtpDateOfBirth.MaxDate = DateTime.Today;
         }
 
         /// <summary>
