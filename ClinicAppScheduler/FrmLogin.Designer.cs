@@ -42,40 +42,46 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(70, 110);
+            label1.Location = new Point(100, 183);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(84, 15);
+            label1.Size = new Size(128, 25);
             label1.TabIndex = 0;
             label1.Text = "Email Address:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(94, 173);
+            label2.Location = new Point(134, 288);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(60, 15);
+            label2.Size = new Size(91, 25);
             label2.TabIndex = 1;
             label2.Text = "Password:";
             // 
             // txtEmailAddress
             // 
-            txtEmailAddress.Location = new Point(168, 107);
+            txtEmailAddress.Location = new Point(240, 178);
+            txtEmailAddress.Margin = new Padding(4, 5, 4, 5);
             txtEmailAddress.Name = "txtEmailAddress";
-            txtEmailAddress.Size = new Size(132, 23);
+            txtEmailAddress.Size = new Size(187, 31);
             txtEmailAddress.TabIndex = 2;
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(168, 170);
+            txtPassword.Location = new Point(240, 283);
+            txtPassword.Margin = new Padding(4, 5, 4, 5);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(132, 23);
+            txtPassword.PasswordChar = '*';
+            txtPassword.Size = new Size(187, 31);
             txtPassword.TabIndex = 3;
             // 
             // button1
             // 
-            button1.Location = new Point(346, 107);
+            button1.Location = new Point(494, 178);
+            button1.Margin = new Padding(4, 5, 4, 5);
             button1.Name = "button1";
-            button1.Size = new Size(88, 23);
+            button1.Size = new Size(126, 38);
             button1.TabIndex = 4;
             button1.Text = "Login";
             button1.UseVisualStyleBackColor = true;
@@ -83,9 +89,10 @@
             // 
             // button2
             // 
-            button2.Location = new Point(346, 165);
+            button2.Location = new Point(494, 275);
+            button2.Margin = new Padding(4, 5, 4, 5);
             button2.Name = "button2";
-            button2.Size = new Size(88, 23);
+            button2.Size = new Size(126, 38);
             button2.TabIndex = 5;
             button2.Text = "Sign Up";
             button2.UseVisualStyleBackColor = true;
@@ -93,6 +100,7 @@
             // 
             // contextMenuStrip1
             // 
+            contextMenuStrip1.ImageScalingSize = new Size(24, 24);
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
             // 
@@ -100,17 +108,18 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = SystemColors.WindowText;
-            label3.Location = new Point(209, 38);
+            label3.Location = new Point(299, 63);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(43, 15);
+            label3.Size = new Size(67, 25);
             label3.TabIndex = 7;
             label3.Text = "Sign In";
             // 
             // FrmLogin
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(489, 304);
+            ClientSize = new Size(699, 507);
             Controls.Add(label3);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -118,6 +127,7 @@
             Controls.Add(txtEmailAddress);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "FrmLogin";
             Text = "Clinic App Scheduler";
             Load += FrmLogin_Load;
