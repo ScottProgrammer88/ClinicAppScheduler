@@ -40,6 +40,10 @@ namespace ClinicAppScheduler
             else
             {
                 MessageBox.Show("Login Successful");
+                FrmMenu menu = new FrmMenu();
+                menu.Show();
+                this.Hide();
+                
             }
         }
 
