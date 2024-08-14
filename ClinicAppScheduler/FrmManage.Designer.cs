@@ -1,6 +1,6 @@
 ﻿namespace ClinicAppScheduler
 {
-    partial class FrmMenu
+    partial class FrmManage
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,6 @@
             bookToolStripMenuItem = new ToolStripMenuItem();
             manageToolStripMenuItem = new ToolStripMenuItem();
             historyToolStripMenuItem = new ToolStripMenuItem();
-            button1 = new Button();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -53,6 +52,7 @@
             menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             menuToolStripMenuItem.Size = new Size(73, 29);
             menuToolStripMenuItem.Text = "Menu";
+            menuToolStripMenuItem.Click += menuToolStripMenuItem_Click;
             // 
             // appointmentToolStripMenuItem
             // 
@@ -64,43 +64,30 @@
             // bookToolStripMenuItem
             // 
             bookToolStripMenuItem.Name = "bookToolStripMenuItem";
-            bookToolStripMenuItem.Size = new Size(178, 34);
+            bookToolStripMenuItem.Size = new Size(270, 34);
             bookToolStripMenuItem.Text = "Book";
-            bookToolStripMenuItem.Click += bookToolStripMenuItem_Click;
             // 
             // manageToolStripMenuItem
             // 
             manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            manageToolStripMenuItem.Size = new Size(178, 34);
+            manageToolStripMenuItem.Size = new Size(270, 34);
             manageToolStripMenuItem.Text = "Manage";
-            manageToolStripMenuItem.Click += manageToolStripMenuItem_Click;
             // 
             // historyToolStripMenuItem
             // 
             historyToolStripMenuItem.Name = "historyToolStripMenuItem";
-            historyToolStripMenuItem.Size = new Size(178, 34);
+            historyToolStripMenuItem.Size = new Size(270, 34);
             historyToolStripMenuItem.Text = "History";
             // 
-            // button1
-            // 
-            button1.Location = new Point(316, 204);
-            button1.Name = "button1";
-            button1.Size = new Size(155, 59);
-            button1.TabIndex = 1;
-            button1.Text = "Logout";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // FrmMenu
+            // FrmManage
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Name = "FrmMenu";
-            Text = "FrmMenu";
+            Name = "FrmManage";
+            Text = "FrmManage";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -115,6 +102,5 @@
         private ToolStripMenuItem bookToolStripMenuItem;
         private ToolStripMenuItem manageToolStripMenuItem;
         private ToolStripMenuItem historyToolStripMenuItem;
-        private Button button1;
     }
 }

@@ -43,7 +43,7 @@ namespace ClinicAppScheduler
                 FrmMenu menu = new FrmMenu();
                 menu.Show();
                 this.Hide();
-                
+
             }
         }
 

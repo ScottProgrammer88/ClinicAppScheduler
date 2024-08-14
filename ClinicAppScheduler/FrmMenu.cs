@@ -16,5 +16,23 @@ namespace ClinicAppScheduler
         {
             InitializeComponent();
         }
+
+        private void bookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAppointmentsForm appointment = new FrmAppointmentsForm();
+            appointment.ShowDialog();
+            this.Hide();
+        }
+
+        private void manageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Logout successful");
+            this.Close();
+        }
     }
 }
