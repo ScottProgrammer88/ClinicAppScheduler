@@ -40,6 +40,8 @@ namespace ClinicAppScheduler
             else
             {
                 MessageBox.Show("Login Successful");
+                // Set session details
+                LoginUser(patient.PatientId);
                 FrmMenu menu = new FrmMenu();
                 menu.Show();
                 this.Hide();
@@ -66,20 +68,33 @@ namespace ClinicAppScheduler
             {
                 return null;
             }
-            else
+                
+            // BCrypt.Net.BCrypt.EnhancedVerify() checks if the password matches the password hash
+            if (BCrypt.Net.BCrypt.EnhancedVerify(password, patient.PasswordHash))
             {
-                // BCrypt.Net.BCrypt.EnhancedVerify() checks if the password matches the password hash
-                if (!BCrypt.Net.BCrypt.EnhancedVerify(password, patient.PasswordHash))
-                {
-                    // After validation store PatientId to Session.userId to keep track
-                    // of which Patient is logged in. Same for the Patients first name.
-                    Session.userId = patient.PatientId;
-                    Session.userName = patient.FirstName;
-                    return null;
-                }
+                // After validation store PatientId to Session.userId to keep track
+                // of which Patient is logged in. Same for the Patients first name.
+                Session.userId = patient.PatientId;
+                Session.userName = patient.FirstName;
+
+                return patient;
             }
-            return patient;
+            return null;
         }
 
+        
+        // Method to set session details
+        private void LoginUser(int patientId)
+        {
+            using (var context = new ClinicContext())
+            {
+                var patient = context.Patients.FirstOrDefault(p => p.PatientId == patientId);
+                if (patient != null)
+                {
+                    Session.userId = patient.PatientId;
+                    Session.userName = patient.FirstName;
+                }
+            }
+        }
     }
 }

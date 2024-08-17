@@ -27,6 +27,8 @@ namespace ClinicAppScheduler
             DateTime appointmentDate = dtpAppointmentDate.Value;
             string appointmentTime = dtpAppointmentTime.Value.ToString("HH:mm");
 
+            // Get the logged-in user's ID from the Session class
+            int userId = Session.userId;
 
             // Validate the patient and doctor IDs
             if (patientId <= 0 || doctorId <= 0)
@@ -49,7 +51,8 @@ namespace ClinicAppScheduler
                     PatientId = patientId,
                     DoctorId = doctorId,
                     AppointmentDate = appointmentDate,
-                    AppointmentTime = appointmentTime   
+                    AppointmentTime = appointmentTime, 
+                    UserId = userId // Associate the appointment with the logged-in user
                 };
 
                 // Add the new appointment to the database
