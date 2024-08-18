@@ -25,5 +25,9 @@ namespace ClinicAppScheduler.Models
         [Required]
         [EmailAddress]
         public string EmailAddress { get; set; }
+
+        // Either female or male 
+        [Required]
+        public char Gender { get; set; }
     }
 }
