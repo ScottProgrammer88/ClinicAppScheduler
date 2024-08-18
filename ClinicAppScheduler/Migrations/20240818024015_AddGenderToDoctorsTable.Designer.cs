@@ -4,6 +4,7 @@ using ClinicAppScheduler.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ClinicAppScheduler.Migrations
 {
     [DbContext(typeof(ClinicContext))]
-    partial class ClinicContextModelSnapshot : ModelSnapshot
+    [Migration("20240818024015_AddGenderToDoctorsTable")]
+    partial class AddGenderToDoctorsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,56 +85,6 @@ namespace ClinicAppScheduler.Migrations
                     b.HasKey("DoctorId");
 
                     b.ToTable("Doctors");
-
-                    b.HasData(
-                        new
-                        {
-                            DoctorId = 1,
-                            EmailAddress = "smith1@yahoo.com",
-                            FullName = "Dr.J Smith",
-                            Gender = "F",
-                            LicenseNumber = "ABC123456"
-                        },
-                        new
-                        {
-                            DoctorId = 2,
-                            EmailAddress = "indianajones@gmail.com",
-                            FullName = "Dr.Robert Jones",
-                            Gender = "M",
-                            LicenseNumber = "DEF789101"
-                        },
-                        new
-                        {
-                            DoctorId = 3,
-                            EmailAddress = "blackwidow@yahoo.com",
-                            FullName = "Dr.Scarlett Johansson",
-                            Gender = "F",
-                            LicenseNumber = "GHI904710"
-                        },
-                        new
-                        {
-                            DoctorId = 4,
-                            EmailAddress = "ironman@comcast.com",
-                            FullName = "Dr.Tony S",
-                            Gender = "M",
-                            LicenseNumber = "JKL220035"
-                        },
-                        new
-                        {
-                            DoctorId = 5,
-                            EmailAddress = "price@yahoo.com",
-                            FullName = "Dr.Chloe Price",
-                            Gender = "F",
-                            LicenseNumber = "MNO010101"
-                        },
-                        new
-                        {
-                            DoctorId = 6,
-                            EmailAddress = "scarers@gmail.com",
-                            FullName = "Dr.Mike Wasoski",
-                            Gender = "M",
-                            LicenseNumber = "PQR246810"
-                        });
                 });
 
             modelBuilder.Entity("ClinicAppScheduler.Models.Patient", b =>
