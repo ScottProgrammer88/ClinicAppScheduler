@@ -48,11 +48,11 @@ namespace ClinicAppScheduler
                 // Create a new instance of the Appointment class
                 Appointment newAppointment = new Appointment
                 {
-                    PatientId = patientId,
+                    PatientId = userId, // Associate the appointment with the logged-in user
                     DoctorId = doctorId,
                     AppointmentDate = appointmentDate,
                     AppointmentTime = appointmentTime, 
-                    UserId = userId // Associate the appointment with the logged-in user
+                     
                 };
 
                 // Add the new appointment to the database
