@@ -51,8 +51,8 @@ namespace ClinicAppScheduler
                     PatientId = userId, // Associate the appointment with the logged-in user
                     DoctorId = doctorId,
                     AppointmentDate = appointmentDate,
-                    AppointmentTime = appointmentTime, 
-                     
+                    AppointmentTime = appointmentTime,
+
                 };
 
                 // Add the new appointment to the database
@@ -61,12 +61,37 @@ namespace ClinicAppScheduler
 
                 // Display a success message
                 MessageBox.Show("Appointment saved successfully!");
+                FrmMenu menu = new FrmMenu();
+                menu.Show();
+                this.Hide();
             }
         }
 
         private void FrmAppointmentsForm_Load(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmMenu menu = new FrmMenu();
+            menu.Show();
+            this.Hide();
+
+        }
+
+        private void manageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmManage manage = new FrmManage();
+            manage.Show();
+            this.Hide();
+        }
+
+        private void historyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmHistory history = new FrmHistory();
+            history.Show();
+            this.Hide();
         }
     }
 }

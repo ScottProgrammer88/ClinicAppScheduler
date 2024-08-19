@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnOpenDoctorForm = new Button();
             lblFirstName = new Label();
             lblLastName = new Label();
             lblDateOfBirth = new Label();
@@ -44,18 +43,7 @@
             btnSave = new Button();
             label1 = new Label();
             txtPassword = new TextBox();
-            btnOpenAppointmentsForm = new Button();
             SuspendLayout();
-            // 
-            // btnOpenDoctorForm
-            // 
-            btnOpenDoctorForm.Location = new Point(504, 473);
-            btnOpenDoctorForm.Name = "btnOpenDoctorForm";
-            btnOpenDoctorForm.Size = new Size(117, 47);
-            btnOpenDoctorForm.TabIndex = 0;
-            btnOpenDoctorForm.Text = "Open Doctor Form";
-            btnOpenDoctorForm.UseVisualStyleBackColor = true;
-            btnOpenDoctorForm.Click += btnOpenDoctorForm_Click;
             // 
             // lblFirstName
             // 
@@ -180,22 +168,11 @@
             txtPassword.Size = new Size(100, 23);
             txtPassword.TabIndex = 15;
             // 
-            // btnOpenAppointmentsForm
-            // 
-            btnOpenAppointmentsForm.Location = new Point(270, 473);
-            btnOpenAppointmentsForm.Name = "btnOpenAppointmentsForm";
-            btnOpenAppointmentsForm.Size = new Size(162, 47);
-            btnOpenAppointmentsForm.TabIndex = 16;
-            btnOpenAppointmentsForm.Text = "Open Appointments Form";
-            btnOpenAppointmentsForm.UseVisualStyleBackColor = true;
-            btnOpenAppointmentsForm.Click += btnOpenAppointmentsForm_Click;
-            // 
             // frmPatient
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 553);
-            Controls.Add(btnOpenAppointmentsForm);
             Controls.Add(txtPassword);
             Controls.Add(label1);
             Controls.Add(btnSave);
@@ -211,7 +188,6 @@
             Controls.Add(lblDateOfBirth);
             Controls.Add(lblLastName);
             Controls.Add(lblFirstName);
-            Controls.Add(btnOpenDoctorForm);
             Name = "frmPatient";
             Text = "Patient Form";
             Load += frmPatient_Load;
@@ -220,8 +196,6 @@
         }
 
         #endregion
-
-        private Button btnOpenDoctorForm;
         private Label lblFirstName;
         private Label lblLastName;
         private Label lblDateOfBirth;
@@ -237,6 +211,5 @@
         private Button btnSave;
         private Label label1;
         private TextBox txtPassword;
-        private Button btnOpenAppointmentsForm;
     }
 }
