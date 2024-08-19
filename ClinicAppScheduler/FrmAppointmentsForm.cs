@@ -61,6 +61,9 @@ namespace ClinicAppScheduler
 
                 // Display a success message
                 MessageBox.Show("Appointment saved successfully!");
+                FrmMenu menu = new FrmMenu();
+                menu.Show();
+                this.Hide();
             }
         }
 
