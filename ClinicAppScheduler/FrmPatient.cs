@@ -12,11 +12,7 @@ namespace ClinicAppScheduler
 
         private void btnOpenDoctorForm_Click(object sender, EventArgs e)
         {
-            // Create an instance of the frmDoctor form, this creates a new object. 
-            frmDoctor doctorForm = new frmDoctor();
 
-            // Display the form as a modal dialog box
-            doctorForm.ShowDialog();
         }
 
         private void frmPatient_Load(object sender, EventArgs e)
@@ -95,11 +91,7 @@ namespace ClinicAppScheduler
 
         private void btnOpenAppointmentsForm_Click(object sender, EventArgs e)
         {
-            // Create an instance of the FrmAppointmentsForm form
-            FrmAppointmentsForm appointmentsForm = new FrmAppointmentsForm();
-
-            // use ShowDialog() to display the form as a modal dialog box
-            appointmentsForm.ShowDialog(); 
+ 
         }
     }
 
