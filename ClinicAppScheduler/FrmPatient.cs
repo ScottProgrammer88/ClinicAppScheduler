@@ -72,6 +72,9 @@ namespace ClinicAppScheduler
                 }
 
                 MessageBox.Show("Patient saved successfully!");
+                FrmLogin login = new FrmLogin();
+                login.Show();
+                this.Hide();
             }
 
         }
