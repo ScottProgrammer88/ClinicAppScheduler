@@ -49,55 +49,49 @@
             // lblPatientID
             // 
             lblPatientID.AutoSize = true;
-            lblPatientID.Location = new Point(139, 100);
-            lblPatientID.Margin = new Padding(4, 0, 4, 0);
+            lblPatientID.Location = new Point(97, 60);
             lblPatientID.Name = "lblPatientID";
-            lblPatientID.Size = new Size(88, 25);
+            lblPatientID.Size = new Size(58, 15);
             lblPatientID.TabIndex = 0;
             lblPatientID.Text = "Patient ID";
             // 
             // lblDoctorID
             // 
             lblDoctorID.AutoSize = true;
-            lblDoctorID.Location = new Point(139, 205);
-            lblDoctorID.Margin = new Padding(4, 0, 4, 0);
+            lblDoctorID.Location = new Point(97, 123);
             lblDoctorID.Name = "lblDoctorID";
-            lblDoctorID.Size = new Size(90, 25);
+            lblDoctorID.Size = new Size(57, 15);
             lblDoctorID.TabIndex = 1;
             lblDoctorID.Text = "Doctor ID";
             // 
             // lblAppointmentDate
             // 
             lblAppointmentDate.AutoSize = true;
-            lblAppointmentDate.Location = new Point(139, 310);
-            lblAppointmentDate.Margin = new Padding(4, 0, 4, 0);
+            lblAppointmentDate.Location = new Point(97, 186);
             lblAppointmentDate.Name = "lblAppointmentDate";
-            lblAppointmentDate.Size = new Size(160, 25);
+            lblAppointmentDate.Size = new Size(105, 15);
             lblAppointmentDate.TabIndex = 2;
             lblAppointmentDate.Text = "Appointment Date";
             // 
             // txtPatientID
             // 
-            txtPatientID.Location = new Point(334, 100);
-            txtPatientID.Margin = new Padding(4, 5, 4, 5);
+            txtPatientID.Location = new Point(234, 60);
             txtPatientID.Name = "txtPatientID";
-            txtPatientID.Size = new Size(264, 31);
+            txtPatientID.Size = new Size(186, 23);
             txtPatientID.TabIndex = 3;
             // 
             // txtDoctorID
             // 
-            txtDoctorID.Location = new Point(334, 205);
-            txtDoctorID.Margin = new Padding(4, 5, 4, 5);
+            txtDoctorID.Location = new Point(234, 123);
             txtDoctorID.Name = "txtDoctorID";
-            txtDoctorID.Size = new Size(264, 31);
+            txtDoctorID.Size = new Size(186, 23);
             txtDoctorID.TabIndex = 4;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(114, 540);
-            btnSave.Margin = new Padding(4, 5, 4, 5);
+            btnSave.Location = new Point(80, 324);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(174, 77);
+            btnSave.Size = new Size(122, 46);
             btnSave.TabIndex = 8;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
@@ -105,30 +99,27 @@
             // 
             // dtpAppointmentDate
             // 
-            dtpAppointmentDate.Location = new Point(334, 310);
-            dtpAppointmentDate.Margin = new Padding(4, 5, 4, 5);
+            dtpAppointmentDate.Location = new Point(234, 186);
             dtpAppointmentDate.Name = "dtpAppointmentDate";
-            dtpAppointmentDate.Size = new Size(360, 31);
+            dtpAppointmentDate.Size = new Size(253, 23);
             dtpAppointmentDate.TabIndex = 9;
             // 
             // lblAppointmentTime
             // 
             lblAppointmentTime.AutoSize = true;
-            lblAppointmentTime.Location = new Point(139, 423);
-            lblAppointmentTime.Margin = new Padding(4, 0, 4, 0);
+            lblAppointmentTime.Location = new Point(97, 254);
             lblAppointmentTime.Name = "lblAppointmentTime";
-            lblAppointmentTime.Size = new Size(161, 25);
+            lblAppointmentTime.Size = new Size(107, 15);
             lblAppointmentTime.TabIndex = 10;
             lblAppointmentTime.Text = "Appointment Time";
             // 
             // dtpAppointmentTime
             // 
             dtpAppointmentTime.Format = DateTimePickerFormat.Time;
-            dtpAppointmentTime.Location = new Point(334, 423);
-            dtpAppointmentTime.Margin = new Padding(4, 5, 4, 5);
+            dtpAppointmentTime.Location = new Point(234, 254);
             dtpAppointmentTime.Name = "dtpAppointmentTime";
             dtpAppointmentTime.ShowUpDown = true;
-            dtpAppointmentTime.Size = new Size(360, 31);
+            dtpAppointmentTime.Size = new Size(253, 23);
             dtpAppointmentTime.TabIndex = 11;
             // 
             // menuStrip1
@@ -137,46 +128,50 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { menuToolStripMenuItem, appointmentToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1143, 33);
+            menuStrip1.Padding = new Padding(4, 1, 0, 1);
+            menuStrip1.Size = new Size(800, 24);
             menuStrip1.TabIndex = 12;
             menuStrip1.Text = "menuStrip1";
             // 
             // menuToolStripMenuItem
             // 
             menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            menuToolStripMenuItem.Size = new Size(73, 29);
+            menuToolStripMenuItem.Size = new Size(50, 22);
             menuToolStripMenuItem.Text = "Menu";
+            menuToolStripMenuItem.Click += menuToolStripMenuItem_Click;
             // 
             // appointmentToolStripMenuItem
             // 
             appointmentToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { bookToolStripMenuItem, manageToolStripMenuItem, historyToolStripMenuItem });
             appointmentToolStripMenuItem.Name = "appointmentToolStripMenuItem";
-            appointmentToolStripMenuItem.Size = new Size(134, 29);
+            appointmentToolStripMenuItem.Size = new Size(90, 22);
             appointmentToolStripMenuItem.Text = "Appointment";
             // 
             // bookToolStripMenuItem
             // 
             bookToolStripMenuItem.Name = "bookToolStripMenuItem";
-            bookToolStripMenuItem.Size = new Size(270, 34);
+            bookToolStripMenuItem.Size = new Size(180, 22);
             bookToolStripMenuItem.Text = "Book";
             // 
             // manageToolStripMenuItem
             // 
             manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            manageToolStripMenuItem.Size = new Size(270, 34);
+            manageToolStripMenuItem.Size = new Size(180, 22);
             manageToolStripMenuItem.Text = "Manage";
+            manageToolStripMenuItem.Click += manageToolStripMenuItem_Click;
             // 
             // historyToolStripMenuItem
             // 
             historyToolStripMenuItem.Name = "historyToolStripMenuItem";
-            historyToolStripMenuItem.Size = new Size(270, 34);
+            historyToolStripMenuItem.Size = new Size(180, 22);
             historyToolStripMenuItem.Text = "History";
+            historyToolStripMenuItem.Click += historyToolStripMenuItem_Click;
             // 
             // FrmAppointmentsForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1143, 750);
+            ClientSize = new Size(800, 450);
             Controls.Add(dtpAppointmentTime);
             Controls.Add(lblAppointmentTime);
             Controls.Add(dtpAppointmentDate);
@@ -188,7 +183,6 @@
             Controls.Add(lblPatientID);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(4, 5, 4, 5);
             Name = "FrmAppointmentsForm";
             Text = "Appointments Form";
             Load += FrmAppointmentsForm_Load;

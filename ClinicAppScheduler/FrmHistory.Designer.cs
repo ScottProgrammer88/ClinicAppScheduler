@@ -43,48 +43,53 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { menuToolStripMenuItem, appointmentToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 33);
+            menuStrip1.Padding = new Padding(4, 1, 0, 1);
+            menuStrip1.Size = new Size(560, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
             // menuToolStripMenuItem
             // 
             menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            menuToolStripMenuItem.Size = new Size(73, 29);
+            menuToolStripMenuItem.Size = new Size(50, 22);
             menuToolStripMenuItem.Text = "Menu";
+            menuToolStripMenuItem.Click += menuToolStripMenuItem_Click;
             // 
             // appointmentToolStripMenuItem
             // 
             appointmentToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { bookToolStripMenuItem, manageToolStripMenuItem, historyToolStripMenuItem });
             appointmentToolStripMenuItem.Name = "appointmentToolStripMenuItem";
-            appointmentToolStripMenuItem.Size = new Size(134, 29);
+            appointmentToolStripMenuItem.Size = new Size(90, 22);
             appointmentToolStripMenuItem.Text = "Appointment";
             // 
             // bookToolStripMenuItem
             // 
             bookToolStripMenuItem.Name = "bookToolStripMenuItem";
-            bookToolStripMenuItem.Size = new Size(270, 34);
+            bookToolStripMenuItem.Size = new Size(180, 22);
             bookToolStripMenuItem.Text = "Book";
+            bookToolStripMenuItem.Click += bookToolStripMenuItem_Click;
             // 
             // manageToolStripMenuItem
             // 
             manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            manageToolStripMenuItem.Size = new Size(270, 34);
+            manageToolStripMenuItem.Size = new Size(180, 22);
             manageToolStripMenuItem.Text = "Manage";
+            manageToolStripMenuItem.Click += manageToolStripMenuItem_Click;
             // 
             // historyToolStripMenuItem
             // 
             historyToolStripMenuItem.Name = "historyToolStripMenuItem";
-            historyToolStripMenuItem.Size = new Size(270, 34);
+            historyToolStripMenuItem.Size = new Size(180, 22);
             historyToolStripMenuItem.Text = "History";
             // 
             // FrmHistory
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(560, 270);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
+            Margin = new Padding(2);
             Name = "FrmHistory";
             Text = "FrmHistory";
             menuStrip1.ResumeLayout(false);
