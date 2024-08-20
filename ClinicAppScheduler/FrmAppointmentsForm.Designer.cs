@@ -40,9 +40,9 @@
             bookToolStripMenuItem = new ToolStripMenuItem();
             manageToolStripMenuItem = new ToolStripMenuItem();
             historyToolStripMenuItem = new ToolStripMenuItem();
-            listBox1 = new ListBox();
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
+            ltbDoctors = new ListBox();
+            rdbFemale = new RadioButton();
+            rdbMale = new RadioButton();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -144,45 +144,45 @@
             historyToolStripMenuItem.Text = "History";
             historyToolStripMenuItem.Click += historyToolStripMenuItem_Click;
             // 
-            // listBox1
+            // ltbDoctors
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(59, 73);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(120, 154);
-            listBox1.TabIndex = 13;
+            ltbDoctors.FormattingEnabled = true;
+            ltbDoctors.ItemHeight = 15;
+            ltbDoctors.Location = new Point(59, 73);
+            ltbDoctors.Name = "ltbDoctors";
+            ltbDoctors.Size = new Size(120, 154);
+            ltbDoctors.TabIndex = 13;
             // 
-            // radioButton1
+            // rdbFemale
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(46, 259);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(63, 19);
-            radioButton1.TabIndex = 14;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Female";
-            radioButton1.UseVisualStyleBackColor = true;
+            rdbFemale.AutoSize = true;
+            rdbFemale.Location = new Point(46, 259);
+            rdbFemale.Name = "rdbFemale";
+            rdbFemale.Size = new Size(63, 19);
+            rdbFemale.TabIndex = 14;
+            rdbFemale.TabStop = true;
+            rdbFemale.Text = "Female";
+            rdbFemale.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rdbMale
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(154, 259);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(51, 19);
-            radioButton2.TabIndex = 15;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Male";
-            radioButton2.UseVisualStyleBackColor = true;
+            rdbMale.AutoSize = true;
+            rdbMale.Location = new Point(154, 259);
+            rdbMale.Name = "rdbMale";
+            rdbMale.Size = new Size(51, 19);
+            rdbMale.TabIndex = 15;
+            rdbMale.TabStop = true;
+            rdbMale.Text = "Male";
+            rdbMale.UseVisualStyleBackColor = true;
             // 
             // FrmAppointmentsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(687, 341);
-            Controls.Add(radioButton2);
-            Controls.Add(radioButton1);
-            Controls.Add(listBox1);
+            Controls.Add(rdbMale);
+            Controls.Add(rdbFemale);
+            Controls.Add(ltbDoctors);
             Controls.Add(dtpAppointmentTime);
             Controls.Add(lblAppointmentTime);
             Controls.Add(dtpAppointmentDate);
@@ -214,8 +214,8 @@
         private ToolStripMenuItem bookToolStripMenuItem;
         private ToolStripMenuItem manageToolStripMenuItem;
         private ToolStripMenuItem historyToolStripMenuItem;
-        private ListBox listBox1;
-        private RadioButton radioButton1;
-        private RadioButton radioButton2;
+        private ListBox ltbDoctors;
+        private RadioButton rdbFemale;
+        private RadioButton rdbMale;
     }
 }
