@@ -17,19 +17,43 @@ namespace ClinicAppScheduler
         public FrmAppointmentsForm()
         {
             InitializeComponent();
-            LoadList();
+            LoadList(null);
+        }
+
+        /// <summary>
+        /// Checks if female radio button is selected, if selected
+        /// this will display the doctors who are female in the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rdbFemale_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadList('F');
+        }
+
+        /// <summary>
+        /// Checks if male radio button is selected, if selected
+        /// this will display the doctors who are male in the list 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rdbMale_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadList('M');
         }
 
         /// <summary>
         /// Displays the list of doctors from the database
         /// </summary>
-        private void LoadList()
+        private void LoadList(char? gender)
         {
             using ClinicContext dbContext = new ClinicContext();
 
-            // query to get full names of the doctors
+            // query to get full names of the doctors who's gender is either female or male
             var doctors = dbContext.Doctors
-                                   .Select(d => d.FullName).ToList();
+                                   .Where(d => d.Gender == gender)
+                                   .Select(d => d.FullName)
+                                   .ToList();
 
             // inserts doctors names into list box 
             ltbDoctors.DataSource = doctors;
@@ -110,5 +134,7 @@ namespace ClinicAppScheduler
             history.Show();
             this.Hide();
         }
+
+        
     }
 }

@@ -160,9 +160,9 @@
             rdbFemale.Name = "rdbFemale";
             rdbFemale.Size = new Size(63, 19);
             rdbFemale.TabIndex = 14;
-            rdbFemale.TabStop = true;
             rdbFemale.Text = "Female";
             rdbFemale.UseVisualStyleBackColor = true;
+            rdbFemale.CheckedChanged += rdbFemale_CheckedChanged;
             // 
             // rdbMale
             // 
@@ -171,9 +171,9 @@
             rdbMale.Name = "rdbMale";
             rdbMale.Size = new Size(51, 19);
             rdbMale.TabIndex = 15;
-            rdbMale.TabStop = true;
             rdbMale.Text = "Male";
             rdbMale.UseVisualStyleBackColor = true;
+            rdbMale.CheckedChanged += rdbMale_CheckedChanged;
             // 
             // FrmAppointmentsForm
             // 
