@@ -62,26 +62,23 @@ namespace ClinicAppScheduler
         private void btnSave_Click(object sender, EventArgs e)
         {
             // Collect the data from the form
-            // int patientId = Convert.ToInt32(txtPatientID.Text);
-            // int doctorId = Convert.ToInt32(txtDoctorID.Text);
             DateTime appointmentDate = dtpAppointmentDate.Value;
             string appointmentTime = dtpAppointmentTime.Value.ToString("HH:mm");
+
+            // gets the name of the doctor that has been selected
+            String doctorName = ltbDoctors.SelectedItem.ToString();
+            // gets the doctorId of the doctor selected
+            int doctorId = GetDoctorId(doctorName);
 
             // Get the logged-in user's ID from the Session class
             int userId = Session.userId;
 
-            // Validate the patient and doctor IDs
-            /*if (patientId <= 0 || doctorId <= 0)
+            // Validate doctor Id
+            if (doctorId <= 0)
             {
-                MessageBox.Show("Please enter valid patient and doctor ID.");
-                return;
+                MessageBox.Show("Please select a doctor");
             }
-            if (string.IsNullOrWhiteSpace(txtPatientID.Text) || string.IsNullOrWhiteSpace(txtDoctorID.Text))
-            {
-                MessageBox.Show("Please fill in all required fields.");
-                return;
-            }
-            */
+            
 
             // Save the appointment to the database
             using (var context = new ClinicContext())  // Create a new instance of the ClinicContext
@@ -90,7 +87,7 @@ namespace ClinicAppScheduler
                 Appointment newAppointment = new Appointment
                 {
                     PatientId = userId, // Associate the appointment with the logged-in user
-                    // DoctorId = doctorId,
+                    DoctorId = doctorId,
                     AppointmentDate = appointmentDate,
                     AppointmentTime = appointmentTime,
 
@@ -106,6 +103,24 @@ namespace ClinicAppScheduler
                 menu.Show();
                 this.Hide();
             }
+        }
+
+        /// <summary>
+        /// Finds the doctors name in the database that matches the one selected in the list box.
+        /// Then grabs the id of the doctor and returns the doctors id to
+        /// later be saved to the database
+        /// </summary>
+        /// <param name="doctorName"></param>
+        /// <returns>the id of the doctor selected</returns>
+        private int GetDoctorId(string? doctorName)
+        {
+            using ClinicContext dbContext = new ClinicContext();
+
+            var doctorId = dbContext.Doctors
+                                    .Where(d => d.FullName == doctorName)
+                                    .Select(d => d.DoctorId)
+                                    .FirstOrDefault();
+            return doctorId;
         }
 
         private void FrmAppointmentsForm_Load(object sender, EventArgs e)
