@@ -17,13 +17,29 @@ namespace ClinicAppScheduler
         public FrmAppointmentsForm()
         {
             InitializeComponent();
+            LoadList();
+        }
+
+        /// <summary>
+        /// Displays the list of doctors from the database
+        /// </summary>
+        private void LoadList()
+        {
+            using ClinicContext dbContext = new ClinicContext();
+
+            // query to get full names of the doctors
+            var doctors = dbContext.Doctors
+                                   .Select(d => d.FullName).ToList();
+
+            // inserts doctors names into list box 
+            ltbDoctors.DataSource = doctors;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             // Collect the data from the form
-            int patientId = Convert.ToInt32(txtPatientID.Text);
-            int doctorId = Convert.ToInt32(txtDoctorID.Text);
+            // int patientId = Convert.ToInt32(txtPatientID.Text);
+            // int doctorId = Convert.ToInt32(txtDoctorID.Text);
             DateTime appointmentDate = dtpAppointmentDate.Value;
             string appointmentTime = dtpAppointmentTime.Value.ToString("HH:mm");
 
@@ -31,7 +47,7 @@ namespace ClinicAppScheduler
             int userId = Session.userId;
 
             // Validate the patient and doctor IDs
-            if (patientId <= 0 || doctorId <= 0)
+            /*if (patientId <= 0 || doctorId <= 0)
             {
                 MessageBox.Show("Please enter valid patient and doctor ID.");
                 return;
@@ -41,6 +57,7 @@ namespace ClinicAppScheduler
                 MessageBox.Show("Please fill in all required fields.");
                 return;
             }
+            */
 
             // Save the appointment to the database
             using (var context = new ClinicContext())  // Create a new instance of the ClinicContext
@@ -49,7 +66,7 @@ namespace ClinicAppScheduler
                 Appointment newAppointment = new Appointment
                 {
                     PatientId = userId, // Associate the appointment with the logged-in user
-                    DoctorId = doctorId,
+                    // DoctorId = doctorId,
                     AppointmentDate = appointmentDate,
                     AppointmentTime = appointmentTime,
 
