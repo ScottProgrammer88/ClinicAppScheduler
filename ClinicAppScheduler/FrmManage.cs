@@ -161,7 +161,7 @@ namespace ClinicAppScheduler
         /// <summary>
         /// Displays the list of doctors from the database
         /// </summary>
-        private void LoadList(char? gender)
+        private void LoadList(char gender)
         {
             using ClinicContext dbContext = new ClinicContext();
 
