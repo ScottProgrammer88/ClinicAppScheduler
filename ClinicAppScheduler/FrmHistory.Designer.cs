@@ -34,7 +34,9 @@
             bookToolStripMenuItem = new ToolStripMenuItem();
             manageToolStripMenuItem = new ToolStripMenuItem();
             historyToolStripMenuItem = new ToolStripMenuItem();
+            dgvAppointments = new DataGridView();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvAppointments).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
@@ -65,28 +67,37 @@
             // bookToolStripMenuItem
             // 
             bookToolStripMenuItem.Name = "bookToolStripMenuItem";
-            bookToolStripMenuItem.Size = new Size(180, 22);
+            bookToolStripMenuItem.Size = new Size(117, 22);
             bookToolStripMenuItem.Text = "Book";
             bookToolStripMenuItem.Click += bookToolStripMenuItem_Click;
             // 
             // manageToolStripMenuItem
             // 
             manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            manageToolStripMenuItem.Size = new Size(180, 22);
+            manageToolStripMenuItem.Size = new Size(117, 22);
             manageToolStripMenuItem.Text = "Manage";
             manageToolStripMenuItem.Click += manageToolStripMenuItem_Click;
             // 
             // historyToolStripMenuItem
             // 
             historyToolStripMenuItem.Name = "historyToolStripMenuItem";
-            historyToolStripMenuItem.Size = new Size(180, 22);
+            historyToolStripMenuItem.Size = new Size(117, 22);
             historyToolStripMenuItem.Text = "History";
+            // 
+            // dgvAppointments
+            // 
+            dgvAppointments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAppointments.Location = new Point(37, 56);
+            dgvAppointments.Name = "dgvAppointments";
+            dgvAppointments.Size = new Size(511, 194);
+            dgvAppointments.TabIndex = 1;
             // 
             // FrmHistory
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(560, 270);
+            Controls.Add(dgvAppointments);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Margin = new Padding(2);
@@ -94,6 +105,7 @@
             Text = "FrmHistory";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvAppointments).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -106,5 +118,6 @@
         private ToolStripMenuItem bookToolStripMenuItem;
         private ToolStripMenuItem manageToolStripMenuItem;
         private ToolStripMenuItem historyToolStripMenuItem;
+        private DataGridView dgvAppointments;
     }
 }

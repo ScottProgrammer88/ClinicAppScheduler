@@ -14,6 +14,8 @@ namespace ClinicAppScheduler
 {
     public partial class FrmAppointmentsForm : Form
     {
+        private int userId;
+
         public FrmAppointmentsForm()
         {
             InitializeComponent();
@@ -169,7 +171,7 @@ namespace ClinicAppScheduler
 
         private void historyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmHistory history = new FrmHistory();
+            FrmHistory history = new FrmHistory(userId);
             history.Show();
             this.Hide();
         }
