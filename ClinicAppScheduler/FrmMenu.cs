@@ -7,14 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClinicAppScheduler.Migrations;
+using ClinicAppScheduler.Models;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace ClinicAppScheduler
 {
     public partial class FrmMenu : Form
     {
+        private int userId;
+
         public FrmMenu()
         {
             InitializeComponent();
+            userId = Session.userId;
         }
 
         private void bookToolStripMenuItem_Click(object sender, EventArgs e)
@@ -39,7 +45,7 @@ namespace ClinicAppScheduler
 
         private void historyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmHistory history = new FrmHistory();
+            FrmHistory history = new FrmHistory(userId);
             history.Show();
             this.Hide();
         }
