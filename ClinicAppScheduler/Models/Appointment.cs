@@ -29,9 +29,6 @@ namespace ClinicAppScheduler.Models
         [Required]
         public int DoctorId { get; set; }
 
-        [Required]
-        public int UserId { get; set; }
-
         /// <summary>
         /// Navigation property for the Patient table. This allows EF Core to
         /// use the PatientId to create a relationship between the Appointment and Patient tables
