@@ -29,6 +29,9 @@ namespace ClinicAppScheduler
             dtpAppointmentDate.MaxDate = DateTime.MaxValue;
         }
 
+        /// <summary>
+        /// Populates combo box with times
+        /// </summary>
         private void PopulateComboBox()
         {
             cmbTime.Items.Add("09:00 AM");
@@ -41,6 +44,7 @@ namespace ClinicAppScheduler
             cmbTime.Items.Add("04:00 PM");
             cmbTime.Items.Add("05:00 PM");
 
+            // Sets first item to be shown
             cmbTime.SelectedIndex = 0;
         }
 
@@ -73,16 +77,21 @@ namespace ClinicAppScheduler
         {
             using ClinicContext dbContext = new ClinicContext();
 
-            // query to get full names of the doctors who's gender is either female or male
+            // Query to get full names of the doctors who's gender is either female or male
             var doctors = dbContext.Doctors
                                    .Where(d => d.Gender == gender)
                                    .Select(d => d.FullName)
                                    .ToList();
 
-            // inserts doctors names into list box 
+            // Inserts doctors names into list box 
             ltbDoctors.DataSource = doctors;
         }
 
+        /// <summary>
+        /// Retrieves appointment details chosen by user
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!rdbFemale.Checked && !rdbMale.Checked)
@@ -94,9 +103,9 @@ namespace ClinicAppScheduler
             DateTime appointmentDate = dtpAppointmentDate.Value;
             string appointmentTime = cmbTime.SelectedItem.ToString();
 
-            // gets the name of the doctor that has been selected
+            // Gets the name of the doctor that has been selected
             string doctorName = ltbDoctors.SelectedItem.ToString();
-            // gets the doctorId of the doctor selected
+            // Gets the doctorId of the doctor selected
             int doctorId = GetDoctorId(doctorName);
 
             // Get the logged-in user's ID from the Session class
@@ -105,7 +114,9 @@ namespace ClinicAppScheduler
             // Save the appointment to the database
             using (var context = new ClinicContext())  // Create a new instance of the ClinicContext
             {
-                // checks if user already booked an appointment
+                // Checks if user already booked an appointment
+                // The Any method checks if there is at least one appointment 
+                // that is scheduled for today or in the future
                 bool hasFutureAppointment = context.Appointments
                 .Any(a => a.PatientId == userId && a.AppointmentDate >= DateTime.Today);
 
@@ -141,12 +152,13 @@ namespace ClinicAppScheduler
         /// Then grabs the id of the doctor and returns the doctors id to
         /// later be saved to the database
         /// </summary>
-        /// <param name="doctorName"></param>
-        /// <returns>the id of the doctor selected</returns>
+        /// <param name="doctorName">The name selected in the combo box</param>
+        /// <returns>The id of the doctor selected</returns>
         private int GetDoctorId(string? doctorName)
         {
             using ClinicContext dbContext = new ClinicContext();
 
+            // Retrieves doctors id from database
             var doctorId = dbContext.Doctors
                                     .Where(d => d.FullName == doctorName)
                                     .Select(d => d.DoctorId)
