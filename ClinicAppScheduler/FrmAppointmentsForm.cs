@@ -20,6 +20,12 @@ namespace ClinicAppScheduler
             LoadList(null);
         }
 
+        private void FrmAppointmentsForm_Load(object sender, EventArgs e)
+        {
+            dtpAppointmentDate.MinDate = DateTime.Today.AddDays(1);
+            dtpAppointmentDate.MaxDate = DateTime.MaxValue;
+        }
+
         /// <summary>
         /// Checks if female radio button is selected, if selected
         /// this will display the doctors who are female in the list
@@ -121,11 +127,6 @@ namespace ClinicAppScheduler
                                     .Select(d => d.DoctorId)
                                     .FirstOrDefault();
             return doctorId;
-        }
-
-        private void FrmAppointmentsForm_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void menuToolStripMenuItem_Click(object sender, EventArgs e)
