@@ -67,12 +67,17 @@ namespace ClinicAppScheduler
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!rdbFemale.Checked && !rdbMale.Checked)
+            {
+                MessageBox.Show("Please select a gender to filter the doctors.");
+                return;
+            }
             // Collect the data from the form
             DateTime appointmentDate = dtpAppointmentDate.Value;
             string appointmentTime = dtpAppointmentTime.Value.ToString("HH:mm");
 
             // gets the name of the doctor that has been selected
-            String doctorName = ltbDoctors.SelectedItem.ToString();
+            string doctorName = ltbDoctors.SelectedItem.ToString();
             // gets the doctorId of the doctor selected
             int doctorId = GetDoctorId(doctorName);
 

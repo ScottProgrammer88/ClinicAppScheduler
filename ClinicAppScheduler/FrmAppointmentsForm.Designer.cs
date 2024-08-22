@@ -156,12 +156,10 @@
             // rdbFemale
             // 
             rdbFemale.AutoSize = true;
-            rdbFemale.Checked = true;
             rdbFemale.Location = new Point(46, 259);
             rdbFemale.Name = "rdbFemale";
             rdbFemale.Size = new Size(63, 19);
             rdbFemale.TabIndex = 14;
-            rdbFemale.TabStop = true;
             rdbFemale.Text = "Female";
             rdbFemale.UseVisualStyleBackColor = true;
             rdbFemale.CheckedChanged += rdbFemale_CheckedChanged;
