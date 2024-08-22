@@ -16,7 +16,6 @@ namespace ClinicAppScheduler
     public partial class FrmManage : Form
     {
         private int userId;
-        private Appointment currentAppointment;
 
 
         public FrmManage()
@@ -29,8 +28,7 @@ namespace ClinicAppScheduler
 
         private void FrmManage_Load(object sender, EventArgs e)
         {
-            // Ensure LoadAppointment is called here if not already called in the constructor
-            // LoadAppointment();
+
         }
 
         private void PopulateComboBox()
@@ -48,12 +46,16 @@ namespace ClinicAppScheduler
             cmbTime.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Retrieves appointment details that was scheduled and is shown in 
+        /// list box, date time box, and time box
+        /// </summary>
         private void LoadAppointment()
         {
             using (var context = new ClinicContext())
             {
                 // Load the current appointment details
-                currentAppointment = context.Appointments
+                var currentAppointment = context.Appointments
                     .FirstOrDefault(a => a.PatientId == userId && a.AppointmentDate >= DateTime.Today);
 
                 if (currentAppointment != null)
@@ -67,6 +69,7 @@ namespace ClinicAppScheduler
                     // Set the ComboBox to the appointment time
                     cmbTime.SelectedItem = currentAppointment.AppointmentTime;
 
+                    // 
                     var doctorDetails = context.Appointments
                                                .Where(a => a.PatientId == userId)
                                                .Join(context.Doctors,
@@ -75,6 +78,11 @@ namespace ClinicAppScheduler
                                                      (appointment, doctor) => new { doctor.FullName, doctor.Gender })
                                                .ToList();
 
+                    // Label shows the doctors name
+                    var doctorName = doctorDetails.Select(d => d.FullName).FirstOrDefault();
+                    label1.Text += " " + doctorName;
+
+                    // 
                     ltbDoctors.DataSource = doctorDetails.Select(d => d.FullName).ToList();
 
                     var selectedDoctor = doctorDetails.FirstOrDefault();
@@ -93,7 +101,7 @@ namespace ClinicAppScheduler
                 }
                 else
                 {
-                    // user will not be able to do anything
+                    // User will not be able to do anything
                     MessageBox.Show("No upcoming appointments found.");
                     DisableControls(true);
                     btnCancel.Enabled = false;
@@ -109,13 +117,14 @@ namespace ClinicAppScheduler
         /// <param name="readOnly"></param>
         private void DisableControls(bool readOnly)
         {
+            ltbDoctors.Enabled = !readOnly;
             dtpAppointmentDate.Enabled = !readOnly;
             cmbTime.Enabled = !readOnly;
             rdbFemale.Enabled = !readOnly;
             rdbMale.Enabled = !readOnly;
             btnSave.Enabled = !readOnly;
+            btnCancel.Enabled = readOnly;
         }
-
 
         private void menuToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -143,9 +152,86 @@ namespace ClinicAppScheduler
             this.Hide();
         }
 
+        /// <summary>
+        /// User can now change their appointment details
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnUpdate_Click_1(object sender, EventArgs e)
         {
+            label1.Text = "Choose a Doctor";
             DisableControls(false);
+        }
+
+        /// <summary>
+        /// Checks if female radio button is selected, if selected
+        /// this will display the doctors who are female in the list 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rdbFemale_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadList('F');
+        }
+
+        /// <summary>
+        /// Checks if male radio button is selected, if selected
+        /// this will display the doctors who are male in the list 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rdbMale_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadList('M');
+        }
+
+        /// <summary>
+        /// Displays the list of doctors from the database
+        /// </summary>
+        private void LoadList(char? gender)
+        {
+            using ClinicContext dbContext = new ClinicContext();
+
+            // Query to get full names of the doctors who's gender is either female or male
+            var doctors = dbContext.Doctors
+                                   .Where(d => d.Gender == gender)
+                                   .Select(d => d.FullName)
+                                   .ToList();
+
+            // Inserts doctors names into list box 
+            ltbDoctors.DataSource = doctors;
+            ltbDoctors.SelectedIndex = -1;
+        }
+
+        /// <summary>
+        /// Deletes users appointment from the database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            using ClinicContext context = new ClinicContext();
+
+            // Retrieves users appointment
+            var currentAppointment = context.Appointments
+                    .FirstOrDefault(a => a.PatientId == userId && a.AppointmentDate >= DateTime.Today);
+
+            // If appointment is found then remove from database
+            if (currentAppointment != null)
+            {
+                context.Appointments.Remove(currentAppointment);
+                context.SaveChanges();
+                MessageBox.Show("Appointment canceled successfully.");
+                FrmMenu menu = new FrmMenu();
+                menu.Show(this);
+                this.Hide();
+
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
