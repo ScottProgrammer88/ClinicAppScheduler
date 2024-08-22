@@ -1,4 +1,5 @@
 ﻿using ClinicAppScheduler.Data;
+using ClinicAppScheduler.Migrations;
 using ClinicAppScheduler.Models;
 using Microsoft.VisualBasic.ApplicationServices;
 using System;
@@ -31,6 +32,9 @@ namespace ClinicAppScheduler
 
         }
 
+        /// <summary>
+        /// Populates combo box with times
+        /// </summary>
         private void PopulateComboBox()
         {
             cmbTime.Items.Add("09:00 AM");
@@ -42,8 +46,6 @@ namespace ClinicAppScheduler
             cmbTime.Items.Add("03:00 PM");
             cmbTime.Items.Add("04:00 PM");
             cmbTime.Items.Add("05:00 PM");
-
-            cmbTime.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -69,31 +71,23 @@ namespace ClinicAppScheduler
                     // Set the ComboBox to the appointment time
                     cmbTime.SelectedItem = currentAppointment.AppointmentTime;
 
-                    // 
-                    var doctorDetails = context.Appointments
-                                               .Where(a => a.PatientId == userId)
-                                               .Join(context.Doctors,
-                                                     appointment => appointment.DoctorId,
-                                                     doctor => doctor.DoctorId,
-                                                     (appointment, doctor) => new { doctor.FullName, doctor.Gender })
-                                               .ToList();
+                    // Retrieve the details of the doctor associated with the current appointment
+                    var doctorDetails = context.Doctors
+                                               .Where(d => d.DoctorId == currentAppointment.DoctorId)
+                                               .Select(d => new { d.FullName, d.Gender })
+                                               .FirstOrDefault();
 
-                    // Label shows the doctors name
-                    var doctorName = doctorDetails.Select(d => d.FullName).FirstOrDefault();
-                    label1.Text += " " + doctorName;
-
-                    // 
-                    ltbDoctors.DataSource = doctorDetails.Select(d => d.FullName).ToList();
-
-                    var selectedDoctor = doctorDetails.FirstOrDefault();
-                    if (selectedDoctor != null)
+                    if (doctorDetails != null)
                     {
-                        ltbDoctors.SelectedItem = selectedDoctor.FullName;
-                        if (selectedDoctor.Gender == 'F')
+                        // Label shows the doctors name
+                        label1.Text += " " + doctorDetails.FullName;
+
+                        // Checks off radio button of the doctors gender
+                        if (doctorDetails.Gender == 'F')
                         {
                             rdbFemale.Checked = true;
                         }
-                        else if (selectedDoctor.Gender == 'M')
+                        else if (doctorDetails.Gender == 'M')
                         {
                             rdbMale.Checked = true;
                         }
@@ -123,33 +117,6 @@ namespace ClinicAppScheduler
             rdbFemale.Enabled = !readOnly;
             rdbMale.Enabled = !readOnly;
             btnSave.Enabled = !readOnly;
-            btnCancel.Enabled = readOnly;
-        }
-
-        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmMenu menu = new FrmMenu();
-            menu.Show(this);
-            this.Hide();
-        }
-
-        private void bookToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmAppointmentsForm appointments = new FrmAppointmentsForm();
-            appointments.Show();
-            this.Hide();
-        }
-
-        private void manageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void historyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmHistory history = new FrmHistory(userId);
-            history.Show();
-            this.Hide();
         }
 
         /// <summary>
@@ -160,7 +127,9 @@ namespace ClinicAppScheduler
         private void btnUpdate_Click_1(object sender, EventArgs e)
         {
             label1.Text = "Choose a Doctor";
-            DisableControls(false);
+            DisableControls(false); 
+            btnCancel.Enabled = false;
+            btnUpdate.Enabled = false;
         }
 
         /// <summary>
@@ -200,7 +169,6 @@ namespace ClinicAppScheduler
 
             // Inserts doctors names into list box 
             ltbDoctors.DataSource = doctors;
-            ltbDoctors.SelectedIndex = -1;
         }
 
         /// <summary>
@@ -229,9 +197,93 @@ namespace ClinicAppScheduler
             }
         }
 
+        /// <summary>
+        /// Calls method UpdateAppointmentDetails
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
+            UpdateAppointmentDetails();
+        }
 
+        /// <summary>
+        /// Updates the old appointment with the new appointment details
+        /// </summary>
+        private void UpdateAppointmentDetails()
+        {
+            using ClinicContext context = new ClinicContext();
+
+            var currentAppointment = context.Appointments
+                   .FirstOrDefault(a => a.PatientId == userId && a.AppointmentDate >= DateTime.Today);
+
+            if (currentAppointment != null)
+            {
+                // Update the appointment date and time
+                currentAppointment.AppointmentDate = dtpAppointmentDate.Value;
+                currentAppointment.AppointmentTime = cmbTime.SelectedItem.ToString();
+
+                // Gets selected doctor name from list box
+                string doctorName = ltbDoctors.SelectedItem.ToString();
+
+                // Gets selected doctor names id
+                int doctorId = GetDoctorId(doctorName);
+                
+                currentAppointment.DoctorId = doctorId;
+
+                // Save changes to the database
+                context.SaveChanges();
+                MessageBox.Show("Appointment updated successfully.");
+                // Send user back to menu
+                FrmMenu menu = new FrmMenu();
+                menu.Show(this);
+                this.Hide();
+            }
+        }
+
+        /// <summary>
+        /// Finds the doctors name in the database that matches the one selected in the list box.
+        /// Then grabs the id of the doctor and returns the doctors id to
+        /// later be saved to the database
+        /// </summary>
+        /// <param name="doctorName">The name selected in the combo box</param>
+        /// <returns>The id of the doctor selected</returns>
+        private int GetDoctorId(string? doctorName)
+        {
+            using ClinicContext dbContext = new ClinicContext();
+
+            // Retrieves doctors id from database
+            var doctorId = dbContext.Doctors
+                                    .Where(d => d.FullName == doctorName)
+                                    .Select(d => d.DoctorId)
+                                    .FirstOrDefault();
+            return doctorId;
+        }
+
+        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmMenu menu = new FrmMenu();
+            menu.Show(this);
+            this.Hide();
+        }
+
+        private void bookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAppointmentsForm appointments = new FrmAppointmentsForm();
+            appointments.Show();
+            this.Hide();
+        }
+
+        private void manageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void historyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmHistory history = new FrmHistory(userId);
+            history.Show();
+            this.Hide();
         }
     }
 }
