@@ -100,16 +100,19 @@ namespace ClinicAppScheduler
             // Get the logged-in user's ID from the Session class
             int userId = Session.userId;
 
-            // Validate doctor Id
-            if (doctorId <= 0)
-            {
-                MessageBox.Show("Please select a doctor");
-            }
-
-
             // Save the appointment to the database
             using (var context = new ClinicContext())  // Create a new instance of the ClinicContext
             {
+                // checks if user already booked an appointment
+                bool hasFutureAppointment = context.Appointments
+                .Any(a => a.PatientId == userId && a.AppointmentDate >= DateTime.Today);
+
+                if (hasFutureAppointment)
+                {
+                    MessageBox.Show("You already have an appointment scheduled, to update or cancel go to Manage");
+                    return;
+                }
+
                 // Create a new instance of the Appointment class
                 Appointment newAppointment = new Appointment
                 {
