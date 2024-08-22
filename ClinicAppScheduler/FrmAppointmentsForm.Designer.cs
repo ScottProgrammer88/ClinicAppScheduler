@@ -33,7 +33,6 @@
             btnSave = new Button();
             dtpAppointmentDate = new DateTimePicker();
             lblAppointmentTime = new Label();
-            dtpAppointmentTime = new DateTimePicker();
             menuStrip1 = new MenuStrip();
             menuToolStripMenuItem = new ToolStripMenuItem();
             appointmentToolStripMenuItem = new ToolStripMenuItem();
@@ -43,6 +42,7 @@
             ltbDoctors = new ListBox();
             rdbFemale = new RadioButton();
             rdbMale = new RadioButton();
+            cmbTime = new ComboBox();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -89,15 +89,6 @@
             lblAppointmentTime.Size = new Size(107, 15);
             lblAppointmentTime.TabIndex = 10;
             lblAppointmentTime.Text = "Appointment Time";
-            // 
-            // dtpAppointmentTime
-            // 
-            dtpAppointmentTime.Format = DateTimePickerFormat.Time;
-            dtpAppointmentTime.Location = new Point(361, 147);
-            dtpAppointmentTime.Name = "dtpAppointmentTime";
-            dtpAppointmentTime.ShowUpDown = true;
-            dtpAppointmentTime.Size = new Size(253, 23);
-            dtpAppointmentTime.TabIndex = 11;
             // 
             // menuStrip1
             // 
@@ -175,15 +166,23 @@
             rdbMale.UseVisualStyleBackColor = true;
             rdbMale.CheckedChanged += rdbMale_CheckedChanged;
             // 
+            // cmbTime
+            // 
+            cmbTime.FormattingEnabled = true;
+            cmbTime.Location = new Point(361, 153);
+            cmbTime.Name = "cmbTime";
+            cmbTime.Size = new Size(108, 23);
+            cmbTime.TabIndex = 16;
+            // 
             // FrmAppointmentsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(687, 341);
+            Controls.Add(cmbTime);
             Controls.Add(rdbMale);
             Controls.Add(rdbFemale);
             Controls.Add(ltbDoctors);
-            Controls.Add(dtpAppointmentTime);
             Controls.Add(lblAppointmentTime);
             Controls.Add(dtpAppointmentDate);
             Controls.Add(btnSave);
@@ -207,7 +206,6 @@
         private Button btnSave;
         private DateTimePicker dtpAppointmentDate;
         private Label lblAppointmentTime;
-        private DateTimePicker dtpAppointmentTime;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem menuToolStripMenuItem;
         private ToolStripMenuItem appointmentToolStripMenuItem;
@@ -217,5 +215,6 @@
         private ListBox ltbDoctors;
         private RadioButton rdbFemale;
         private RadioButton rdbMale;
+        private ComboBox cmbTime;
     }
 }

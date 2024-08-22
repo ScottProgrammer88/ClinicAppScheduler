@@ -18,12 +18,28 @@ namespace ClinicAppScheduler
         {
             InitializeComponent();
             LoadList(null);
+            PopulateComboBox();
         }
 
         private void FrmAppointmentsForm_Load(object sender, EventArgs e)
         {
             dtpAppointmentDate.MinDate = DateTime.Today.AddDays(1);
             dtpAppointmentDate.MaxDate = DateTime.MaxValue;
+        }
+
+        private void PopulateComboBox()
+        {
+            cmbTime.Items.Add("09:00 AM");
+            cmbTime.Items.Add("10:00 AM");
+            cmbTime.Items.Add("11:00 AM");
+            cmbTime.Items.Add("12:00 PM");
+            cmbTime.Items.Add("1:00 PM");
+            cmbTime.Items.Add("02:00 PM");
+            cmbTime.Items.Add("03:00 PM");
+            cmbTime.Items.Add("04:00 PM");
+            cmbTime.Items.Add("05:00 PM");
+
+            cmbTime.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -74,7 +90,7 @@ namespace ClinicAppScheduler
             }
             // Collect the data from the form
             DateTime appointmentDate = dtpAppointmentDate.Value;
-            string appointmentTime = dtpAppointmentTime.Value.ToString("HH:mm");
+            string appointmentTime = cmbTime.SelectedItem.ToString();
 
             // gets the name of the doctor that has been selected
             string doctorName = ltbDoctors.SelectedItem.ToString();
@@ -89,7 +105,7 @@ namespace ClinicAppScheduler
             {
                 MessageBox.Show("Please select a doctor");
             }
-            
+
 
             // Save the appointment to the database
             using (var context = new ClinicContext())  // Create a new instance of the ClinicContext
@@ -100,8 +116,7 @@ namespace ClinicAppScheduler
                     PatientId = userId, // Associate the appointment with the logged-in user
                     DoctorId = doctorId,
                     AppointmentDate = appointmentDate,
-                    AppointmentTime = appointmentTime,
-
+                    AppointmentTime = appointmentTime
                 };
 
                 // Add the new appointment to the database
