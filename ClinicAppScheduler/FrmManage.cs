@@ -130,6 +130,10 @@ namespace ClinicAppScheduler
             DisableControls(false); 
             btnCancel.Enabled = false;
             btnUpdate.Enabled = false;
+
+            // Set range on date time picker
+            dtpAppointmentDate.MinDate = DateTime.Today.AddDays(1);
+            dtpAppointmentDate.MaxDate = DateTime.MaxValue;
         }
 
         /// <summary>
