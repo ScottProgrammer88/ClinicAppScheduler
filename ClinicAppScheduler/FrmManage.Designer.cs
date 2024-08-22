@@ -100,37 +100,39 @@
             ltbDoctors.ItemHeight = 15;
             ltbDoctors.Location = new Point(66, 61);
             ltbDoctors.Name = "ltbDoctors";
-            ltbDoctors.Size = new Size(120, 154);
+            ltbDoctors.Size = new Size(132, 154);
             ltbDoctors.TabIndex = 1;
             // 
             // rdbFemale
             // 
             rdbFemale.AutoSize = true;
             rdbFemale.Enabled = false;
-            rdbFemale.Location = new Point(44, 247);
+            rdbFemale.Location = new Point(57, 247);
             rdbFemale.Name = "rdbFemale";
             rdbFemale.Size = new Size(63, 19);
             rdbFemale.TabIndex = 2;
             rdbFemale.TabStop = true;
             rdbFemale.Text = "Female";
             rdbFemale.UseVisualStyleBackColor = true;
+            rdbFemale.CheckedChanged += rdbFemale_CheckedChanged;
             // 
             // rdbMale
             // 
             rdbMale.AutoSize = true;
             rdbMale.Enabled = false;
-            rdbMale.Location = new Point(159, 247);
+            rdbMale.Location = new Point(165, 247);
             rdbMale.Name = "rdbMale";
             rdbMale.Size = new Size(51, 19);
             rdbMale.TabIndex = 3;
             rdbMale.TabStop = true;
             rdbMale.Text = "Male";
             rdbMale.UseVisualStyleBackColor = true;
+            rdbMale.CheckedChanged += rdbMale_CheckedChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(83, 34);
+            label1.Location = new Point(66, 34);
             label1.Name = "label1";
             label1.Size = new Size(86, 15);
             label1.TabIndex = 4;
@@ -178,6 +180,7 @@
             btnCancel.TabIndex = 19;
             btnCancel.Text = "Cancel ";
             btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnUpdate
             // 
@@ -197,6 +200,7 @@
             btnSave.TabIndex = 20;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // FrmManage
             // 
