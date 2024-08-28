@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace ClinicAppScheduler.Models
 {
+    /// <summary>
+    /// This is the Appointment table that holds the booking details
+    /// the user made
+    /// </summary>
     public class Appointment
     {
         // Primary key for the Appointment table
