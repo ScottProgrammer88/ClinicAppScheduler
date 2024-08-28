@@ -26,7 +26,7 @@ namespace ClinicAppScheduler
         public FrmManage()
         {
             InitializeComponent();
-            userId = Session.userId;
+            userId = Session.UserId;
             LoadAppointment();
             DisableControls(true);
         }

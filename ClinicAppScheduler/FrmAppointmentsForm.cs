@@ -118,7 +118,7 @@ namespace ClinicAppScheduler
             int doctorId = GetDoctorId(doctorName);
 
             // Get the logged-in user's ID from the Session class
-            int userId = Session.userId;
+            int userId = Session.UserId;
 
             // Save the appointment to the database
             using (var context = new ClinicContext())  // Create a new instance of the ClinicContext

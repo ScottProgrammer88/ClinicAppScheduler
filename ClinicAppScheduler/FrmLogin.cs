@@ -93,8 +93,8 @@ namespace ClinicAppScheduler
             {
                 // After validation store PatientId to Session.userId to keep track
                 // of which Patient is logged in. Same for the Patients first name.
-                Session.userId = patient.PatientId;
-                Session.userName = patient.FirstName;
+                Session.UserId = patient.PatientId;
+                Session.UserName = patient.FirstName;
 
                 return patient;
             }
@@ -113,8 +113,8 @@ namespace ClinicAppScheduler
                 var patient = context.Patients.FirstOrDefault(p => p.PatientId == patientId);
                 if (patient != null)
                 {
-                    Session.userId = patient.PatientId;
-                    Session.userName = patient.FirstName;
+                    Session.UserId = patient.PatientId;
+                    Session.UserName = patient.FirstName;
                 }
             }
         }

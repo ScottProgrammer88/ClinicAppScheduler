@@ -24,7 +24,7 @@ namespace ClinicAppScheduler
         public FrmMenu()
         {
             InitializeComponent();
-            userId = Session.userId;
+            userId = Session.UserId;
         }
 
         /// <summary>
