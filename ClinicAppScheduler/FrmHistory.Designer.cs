@@ -102,7 +102,7 @@
             MainMenuStrip = menuStrip1;
             Margin = new Padding(2);
             Name = "FrmHistory";
-            Text = "FrmHistory";
+            Text = "History Form";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAppointments).EndInit();
