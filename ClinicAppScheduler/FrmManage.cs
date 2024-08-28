@@ -14,6 +14,10 @@ using System.Windows.Forms;
 
 namespace ClinicAppScheduler
 {
+    /// <summary>
+    /// User is able to cancel or update their appointment, and the 
+    /// changes will be saved to the database
+    /// </summary>
     public partial class FrmManage : Form
     {
         private int userId;
@@ -264,6 +268,11 @@ namespace ClinicAppScheduler
             return doctorId;
         }
 
+        /// <summary>
+        /// This tab navigates to the menu form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmMenu menu = new FrmMenu();
@@ -271,6 +280,11 @@ namespace ClinicAppScheduler
             this.Hide();
         }
 
+        /// <summary>
+        /// This tab navigates to the appointment form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bookToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmAppointmentsForm appointments = new FrmAppointmentsForm();
@@ -283,6 +297,11 @@ namespace ClinicAppScheduler
 
         }
 
+        /// <summary>
+        /// This tab navigates to the history form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void historyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmHistory history = new FrmHistory(userId);
