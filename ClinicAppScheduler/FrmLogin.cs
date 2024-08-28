@@ -12,6 +12,11 @@ using System.Windows.Forms;
 
 namespace ClinicAppScheduler
 {
+    /// <summary>
+    /// This form is for when the user logs in using their email and password.
+    /// If successful user will be logged into their account using their ID to keep 
+    /// track of who is signed in. If not successful user receives invalid message 
+    /// </summary>
     public partial class FrmLogin : Form
     {
         public FrmLogin()
@@ -24,14 +29,27 @@ namespace ClinicAppScheduler
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This button sends user to the patient form to create an account
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SignUpButton(object sender, EventArgs e)
         {
             frmPatient frmPatient = new frmPatient();
             frmPatient.Show();
             this.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This method uses a method called Login to send the email and 
+        /// password the user put in to check for validation.
+        /// If successful user receives success message and is sent to the Menu form.
+        /// If not user receives invalid message;
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoginButton(object sender, EventArgs e)
         {
             var patient = Login(txtEmailAddress.Text, txtPassword.Text);
             if (patient == null)
@@ -75,8 +93,8 @@ namespace ClinicAppScheduler
             {
                 // After validation store PatientId to Session.userId to keep track
                 // of which Patient is logged in. Same for the Patients first name.
-                Session.userId = patient.PatientId;
-                Session.userName = patient.FirstName;
+                Session.UserId = patient.PatientId;
+                Session.UserName = patient.FirstName;
 
                 return patient;
             }
@@ -84,7 +102,10 @@ namespace ClinicAppScheduler
         }
 
         
-        // Method to set session details
+        /// <summary>
+        /// Method to set session details
+        /// </summary>
+        /// <param name="patientId"></param>
         private void LoginUser(int patientId)
         {
             using (var context = new ClinicContext())
@@ -92,8 +113,8 @@ namespace ClinicAppScheduler
                 var patient = context.Patients.FirstOrDefault(p => p.PatientId == patientId);
                 if (patient != null)
                 {
-                    Session.userId = patient.PatientId;
-                    Session.userName = patient.FirstName;
+                    Session.UserId = patient.PatientId;
+                    Session.UserName = patient.FirstName;
                 }
             }
         }

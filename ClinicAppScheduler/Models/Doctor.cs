@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace ClinicAppScheduler.Models
 {
+    /// <summary>
+    /// This is the Doctor table where the doctors personal 
+    /// information will be saved 
+    /// </summary>
     public class Doctor
     {
         // tell EF Core to make this primary key

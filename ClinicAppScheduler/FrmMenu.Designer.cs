@@ -65,34 +65,34 @@
             // bookToolStripMenuItem
             // 
             bookToolStripMenuItem.Name = "bookToolStripMenuItem";
-            bookToolStripMenuItem.Size = new Size(180, 22);
+            bookToolStripMenuItem.Size = new Size(117, 22);
             bookToolStripMenuItem.Text = "Book";
             bookToolStripMenuItem.Click += bookToolStripMenuItem_Click;
             // 
             // manageToolStripMenuItem
             // 
             manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            manageToolStripMenuItem.Size = new Size(180, 22);
+            manageToolStripMenuItem.Size = new Size(117, 22);
             manageToolStripMenuItem.Text = "Manage";
             manageToolStripMenuItem.Click += manageToolStripMenuItem_Click;
             // 
             // historyToolStripMenuItem
             // 
             historyToolStripMenuItem.Name = "historyToolStripMenuItem";
-            historyToolStripMenuItem.Size = new Size(180, 22);
+            historyToolStripMenuItem.Size = new Size(117, 22);
             historyToolStripMenuItem.Text = "History";
             historyToolStripMenuItem.Click += historyToolStripMenuItem_Click;
             // 
             // button1
             // 
             button1.Location = new Point(221, 122);
-            button1.Margin = new Padding(2, 2, 2, 2);
+            button1.Margin = new Padding(2);
             button1.Name = "button1";
             button1.Size = new Size(108, 35);
             button1.TabIndex = 1;
             button1.Text = "Logout";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button1.Click += LogoutButton;
             // 
             // FrmMenu
             // 
@@ -102,9 +102,9 @@
             Controls.Add(button1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "FrmMenu";
-            Text = "FrmMenu";
+            Text = "Menu";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);

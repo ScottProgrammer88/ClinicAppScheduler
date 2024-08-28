@@ -178,7 +178,7 @@
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(106, 34);
             btnCancel.TabIndex = 19;
-            btnCancel.Text = "Cancel ";
+            btnCancel.Text = "Delete";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
@@ -222,7 +222,7 @@
             MainMenuStrip = menuStrip1;
             Margin = new Padding(2);
             Name = "FrmManage";
-            Text = "FrmManage";
+            Text = "Manage Form";
             Load += FrmManage_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace ClinicAppScheduler.Models
 {
+    /// <summary>
+    /// This is the Patient table where the users personal 
+    /// information will be saved 
+    /// </summary>
     public class Patient
     {
         /// <summary>
