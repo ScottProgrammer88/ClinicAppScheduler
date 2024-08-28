@@ -14,11 +14,11 @@ namespace ClinicAppScheduler.Models
         /// <summary>
         /// The patient that has logged in, their ID will be stored in userId
         /// </summary>
-        public static int userId { get; set; }
+        public static int UserId { get; set; }
 
         /// <summary>
         /// The patient that has logged in, their first name will be stored in userName
         /// </summary>
-        public static string userName { get; set; }
+        public static string UserName { get; set; }
     }
 }
