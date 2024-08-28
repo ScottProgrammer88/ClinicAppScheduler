@@ -85,7 +85,7 @@
             button1.TabIndex = 4;
             button1.Text = "Login";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button1.Click += LoginButton;
             // 
             // button2
             // 
@@ -96,7 +96,7 @@
             button2.TabIndex = 5;
             button2.Text = "Sign Up";
             button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            button2.Click += SignUpButton;
             // 
             // contextMenuStrip1
             // 
