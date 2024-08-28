@@ -12,6 +12,10 @@ using ClinicAppScheduler.Models;
 
 namespace ClinicAppScheduler
 {
+    /// <summary>
+    /// Allows the logged in user to schedule an appointment that will
+    /// be saved to the database
+    /// </summary>
     public partial class FrmAppointmentsForm : Form
     {
         private int userId;
@@ -23,6 +27,11 @@ namespace ClinicAppScheduler
             PopulateComboBox();
         }
 
+        /// <summary>
+        /// Sets range for date time picker
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmAppointmentsForm_Load(object sender, EventArgs e)
         {
             dtpAppointmentDate.MinDate = DateTime.Today.AddDays(1);
@@ -166,6 +175,11 @@ namespace ClinicAppScheduler
             return doctorId;
         }
 
+        /// <summary>
+        /// This tab navigates to the menu form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmMenu menu = new FrmMenu();
@@ -174,6 +188,11 @@ namespace ClinicAppScheduler
 
         }
 
+        /// <summary>
+        /// This tab navigates to the manage form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void manageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmManage manage = new FrmManage();
@@ -181,6 +200,11 @@ namespace ClinicAppScheduler
             this.Hide();
         }
 
+        /// <summary>
+        /// This tab navigates to the history form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void historyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmHistory history = new FrmHistory(userId);

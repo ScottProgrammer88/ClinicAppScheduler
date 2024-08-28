@@ -191,7 +191,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "FrmAppointmentsForm";
-            Text = "Appointments Form";
+            Text = "Appointment Form";
             Load += FrmAppointmentsForm_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
